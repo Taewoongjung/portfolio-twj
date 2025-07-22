@@ -1,13 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
+const { InlineChunkHtmlPlugin } = require('react-dev-utils/InlineChunkHtmlPlugin');
 
 module.exports = {
     mode: 'production',
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'main.[contenthash].js',
+        clean: true,
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
@@ -21,7 +22,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'], // style-loader가 CSS를 JS에 인라인으로 포함시켜줌
+                use: ['style-loader', 'css-loader'], // CSS를 JS로 포함
             },
         ],
     },
@@ -30,6 +31,6 @@ module.exports = {
             template: 'public/index.html',
             inject: 'body',
         }),
-        new HtmlInlineCSSWebpackPlugin(),
+        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/main/]), // JS 번들을 인라인으로 삽입
     ],
 };
