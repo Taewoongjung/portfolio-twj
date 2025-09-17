@@ -24,9 +24,8 @@ const Main = () => {
 
     const achievements = [
         { number: '2+', label: '년 실무 경험' },
-        { number: '5600만원', label: '개인 서비스 매출' },
-        { number: '455+', label: '서비스 유저' },
-        { number: '99.5%', label: '개선된 정확도' },
+        { number: '6500만원', label: '개인 서비스 매출' },
+        { number: '650+', label: '서비스 유저' },
     ];
 
     return (
@@ -303,7 +302,7 @@ const Main = () => {
                         {[
                             { year: '2022', event: '겜퍼 인턴 시작' },
                             { year: '2023', event: '하우저 백엔드팀 입사' },
-                            { year: '2024', event: '"호빵" 서비스 론칭' },
+                            { year: '2025', event: '"호빵" 서비스 론칭' },
                         ].map((item, index) => (
                             <div
                                 key={index}
